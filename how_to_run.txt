@@ -1,0 +1,76 @@
+$ git clone https://github.com/app-generator/django-volt-dashboard.git
+$ cd django-volt-dashboard
+
+👉 Install modules via VENV
+
+$ virtualenv env
+$ source env/bin/activate
+$ pip install -r requirements.txt
+
+👉 Set Up Database
+
+$ python manage.py makemigrations
+$ python manage.py migrate
+
+👉 Create the Superuser
+
+$ python manage.py createsuperuser
+
+👉 Start the app
+
+$ python manage.py runserver
+At this point, the app runs at http://127.0.0.1:8000/.
+
+
+Codebase structure
+The project is coded using a simple and intuitive structure presented below:
+
+< PROJECT ROOT >
+   |
+   |-- core/                            
+   |    |-- settings.py                  # Project Configuration  
+   |    |-- urls.py                      # Project Routing
+   |
+   |-- home/
+   |    |-- views.py                     # APP Views 
+   |    |-- urls.py                      # APP Routing
+   |    |-- models.py                    # APP Models 
+   |    |-- tests.py                     # Tests  
+   |    |-- templates/                   # Theme Customisation 
+   |         |-- includes                # 
+   |              |-- custom-footer.py   # Custom Footer      
+   |     
+   |-- requirements.txt                  # Project Dependencies
+   |
+   |-- env.sample                        # ENV Configuration (default values)
+   |-- manage.py                         # Start the app - Django default start script
+   |
+   |-- ************************************************************************
+
+How to Customize
+When a template file is loaded in the controller, Django scans all template directories starting from the ones defined by the user, and returns the first match or an error in case the template is not found. The theme used to style this starter provides the following files:
+
+# This exists in ENV: LIB/admin_volt
+< UI_LIBRARY_ROOT >                     
+   |
+   |-- templates/                    # Root Templates Folder 
+   |    |          
+   |    |-- accounts/       
+   |    |    |-- sign-in.html        # Sign IN Page
+   |    |    |-- sign-up.html        # Sign UP Page
+   |    |
+   |    |-- includes/       
+   |    |    |-- footer.html         # Footer component
+   |    |    |-- sidebar.html        # Sidebar component
+   |    |    |-- navigation.html     # Navigation Bar
+   |    |    |-- scripts.html        # Scripts Component
+   |    |
+   |    |-- layouts/       
+   |    |    |-- base.html           # Masterpage
+   |    |    |-- base-auth.html      # Masterpage for Auth Pages
+   |    |
+   |    |-- pages/       
+   |         |-- index.html          # Index Page (presentation)
+   |         |-- settings.html       # Settings  Page
+   |         |-- dashboard.html      # Dashboard page
+   |         |-- *.html              # All other pages
